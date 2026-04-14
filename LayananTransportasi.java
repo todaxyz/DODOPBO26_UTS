@@ -1,6 +1,3 @@
-// File: LayananTransportasi.java
-
-// 1. Kelas Induk Abstrak [cite: 414]
 abstract class LayananTransportasi {
     protected String namaDriver;
     protected double jarak;
