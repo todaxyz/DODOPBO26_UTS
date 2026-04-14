@@ -1,4 +1,7 @@
-public abstract class LayananTransportasi {
+// File: LayananTransportasi.java
+
+// 1. Kelas Induk Abstrak [cite: 414]
+abstract class LayananTransportasi {
     protected String namaDriver;
     protected double jarak;
     protected double saldoUser;
@@ -7,18 +10,18 @@ public abstract class LayananTransportasi {
         this.namaDriver = namaDriver;
         this.saldoUser = saldoUser;
 
-    if (jarak <= 0) {
+        if (jarak <= 0) {
             this.jarak = 1.0;
             System.out.println("Warning: Input jarak tidak valid (<= 0). Disetel ke default 1.0 km.");
         } else {
             this.jarak = jarak;
         }
     }
-public abstract double hitungTarif();
-}
 
-// File: MadiunMotor.java
-public class MadiunMotor extends LayananTransportasi {
+    public abstract double hitungTarif();
+    public abstract void prosesTransaksi(); 
+}
+class MadiunMotor extends LayananTransportasi {
 
     public MadiunMotor(String namaDriver, double jarak, double saldoUser) {
         super(namaDriver, jarak, saldoUser);
@@ -31,8 +34,10 @@ public class MadiunMotor extends LayananTransportasi {
         return tarifDasar + biayaAdmin;
     }
 
+    @Override
     public void prosesTransaksi() {
-        System.out.println("=== Transaksi oleh [DODO FANSYURI ANDRIAN] - [254311023] ==="); ;
+
+        System.out.println("=== Transaksi oleh [DODO FANSYURI ANDRIAN] - [254311023] ===");
         
         double totalTarif = hitungTarif();
         
@@ -48,7 +53,8 @@ public class MadiunMotor extends LayananTransportasi {
     }
 }
 
-public class MadiunMobil extends LayananTransportasi {
+// 3. Kelas Turunan: MadiunMobil [cite: 420]
+class MadiunMobil extends LayananTransportasi {
 
     public MadiunMobil(String namaDriver, double jarak, double saldoUser) {
         super(namaDriver, jarak, saldoUser);
@@ -61,9 +67,9 @@ public class MadiunMobil extends LayananTransportasi {
         return tarifDasar + biayaAdmin;
     }
 
+    @Override
     public void prosesTransaksi() {
-
-        System.out.println("=== Transaksi oleh [DODO FANSYURI ANDRIAN] - [254311023] === ");
+        System.out.println("=== Transaksi oleh [DODO FANSYURI ANDRIAN] - [254311023] ===");
         
         double totalTarif = hitungTarif();
         
